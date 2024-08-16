@@ -11,7 +11,7 @@ Pasos para instalar los modulos
 Configracion de sql server configuration manager
 5. Ir a la ruta de C:\Program Files (x86)\Microsoft SQL Server\150\Shared
 6. Ejecutar el cmd como administrador y luego colocar el comando mofcomp sqlmgmproviderxpsp2up.mof
-7. Habilitar el TCP/IP en SQL Server Network Congfiguration, dentro de la configuracion TC/IP agregar el puero 1433 a ambos los dos ultimos TCP Port
+7. Habilitar el TCP/IP en SQL Server Network Congfiguration, dentro de la configuracion TC/IP agregar el puerto 1433 los dos ultimos TCP Port
 
 Para crear una distribucion
 8. Agregar en package.json en "scripts": 
