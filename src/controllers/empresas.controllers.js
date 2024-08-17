@@ -1,4 +1,5 @@
 import { getConnection, sql, queries } from '../database'
+import bcrypt from 'bcrypt';
 
 
 
@@ -31,11 +32,14 @@ export const getEmpresaById = async (req, res) => {
 export const saveEmpresa = async (req, res) => {
 
     try {
-        const { nombre, cif, director, direccion, telefono, email, estado, contrasenia } = req.body
-
-        if (nombre == null || cif == null || director == null || direccion == null || telefono == null || email == null || estado == null || contrasenia == null) {
+        const { nombre, cif, director, direccion, telefono, email, estado, password } = req.body
+        if (!nombre || !cif || !director || !direccion || !telefono || !email || !estado || !password) {
             return res.status(400).json({ msg: 'Bad Request.  Por favor llena todos los campos' })
         }
+
+        // Encriptar la contraseña
+        const saltRounds = 10; // Número de rondas de encriptación
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const pool = await getConnection();
 
@@ -47,11 +51,11 @@ export const saveEmpresa = async (req, res) => {
             .input('telefono', sql.VarChar, telefono)
             .input('email', sql.VarChar, email)
             .input('estado', sql.Bit, estado)
-            .input('contrasenia', sql.VarChar, contrasenia)
+            .input('password', sql.VarChar, hashedPassword)
             .query(queries.saveEmpresa);
 
         res.json({
-            nombre, cif, director, direccion, telefono, email, estado, contrasenia
+            nombre, cif, director, direccion, telefono, email, estado
         });
 
     } catch (error) {
@@ -62,9 +66,13 @@ export const saveEmpresa = async (req, res) => {
 
 export const updateEmpresaById = async (req, res) => {
 
-    const { nombre, cif, director, direccion, telefono, email, estado, contrasenia } = req.body
+    const { nombre, cif, director, direccion, telefono, email, estado, password } = req.body
 
     const { id } = req.params
+
+    // Encriptar la contraseña
+    const saltRounds = 10; // Número de rondas de encriptación
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     if (nombre == null || cif == null || director == null || direccion == null || telefono == null || email == null || estado == null) {
         return res.status(400).json({ msg: 'Bad Request.  Por favor llena todos los campos' })
@@ -80,12 +88,12 @@ export const updateEmpresaById = async (req, res) => {
         .input('telefono', sql.VarChar, telefono)
         .input('email', sql.VarChar, email)
         .input('estado', sql.Bit, estado)
-        .input('contrasenia', sql.VarChar, contrasenia)
+        .input('password', sql.VarChar, hashedPassword)
         .input('Id', sql.Int, id)
         .query(queries.updateEmpresaById);
 
     res.json({
-        nombre, cif, director, direccion, telefono, email, estado, contrasenia
+        nombre, cif, director, direccion, telefono, email, estado
     });
 };
 
@@ -103,30 +111,48 @@ export const deleteEmpresaById = async (req, res) => {
 };
 
 export const loginEmpresa = async (req, res) => {
+    const { email, password } = req.body;
 
-    const { email, contrasenia } = req.body;
-
-    if (email == null || contrasenia == null) {
-        return res.status(400).json({ msg: 'Por favor, llena todos los campos' });
+    if (!email || !password) {
+        return res.status(400).json({ msg: 'Bad Request. Por favor proporciona email y password.' });
     }
 
     try {
         const pool = await getConnection();
 
+        // Buscar al usuario por email
         const result = await pool.request()
             .input('email', sql.VarChar, email)
-            .input('contrasenia', sql.VarChar, contrasenia)
-            .query(queries.getLoginEmpresa);
+            .query(queries.getEmpresaByEmail);
 
         if (result.recordset.length === 0) {
-            return res.status(401).json({ msg: 'Credenciales incorrectas' });
+            return res.status(401).json({ msg: 'Unauthorized. El email no está registrado.' });
         }
 
-        res.json(result.recordset[0]);
+        const empresa = result.recordset[0];
+
+        // Verifica la contraseña
+        const match = await bcrypt.compare(password, empresa.Password);
+
+        if (!match) {
+            return res.status(401).json({ msg: 'Unauthorized. La contraseña es incorrecta.' });
+        }
+
+        // Login exitoso
+        res.status(200).json({
+            message: 'Login exitoso',
+            empresa: {
+                id: empresa.ID_Empresa,
+                cif: empresa.CIF,
+                nombre: empresa.Nombre,
+                direccion: empresa.Direccion,
+                email: empresa.Email
+            }
+        });
 
     } catch (error) {
-        res.status(500);
-        res.send(error.message);
+        console.error('Error during login:', error);
+        res.status(500).json({ error: 'Internal Server Error', message: 'Error durante el login.' });
     }
 };
 

@@ -1,14 +1,14 @@
 export const queries = {
 
     getAllEmpresa: `SELECT * FROM Empresas`,
-    saveEmpresa: `INSERT INTO Empresas (Nombre, CIF, Director, Direccion, Telefono, Email, Estado, Contrasenia) VALUES
-                    (@nombre, @cif, @director, @direccion, @telefono, @email, @estado, @contrasenia);`,
+    saveEmpresa: `INSERT INTO Empresas (Nombre, CIF, Director, Direccion, Telefono, Email, Estado, Password) VALUES
+                    (@nombre, @cif, @director, @direccion, @telefono, @email, @estado, @password);`,
     getEmpresaById: `SELECT * FROM Empresas
                         WHERE ID_Empresa = @Id`,
     deleteEmpresaById: `DELETE FROM Empresas WHERE ID_Empresa = @Id`,
-    updateEmpresaById: `UPDATE Empresas SET Nombre = @nombre, CIF = @cif, Director = @director, Direccion = @direccion, Telefono = @telefono, Email = @email, Estado = @estado, Contrasenia = @contrasenia
+    updateEmpresaById: `UPDATE Empresas SET Nombre = @nombre, CIF = @cif, Director = @director, Direccion = @direccion, Telefono = @telefono, Email = @email, Estado = @estado, Password = @password
                             WHERE ID_Empresa = @Id`,
-    getLoginEmpresa: `SELECT * FROM Empresas WHERE email = @email AND contrasenia = @contrasenia;`,
+    getEmpresaByEmail: `SELECT * FROM Empresas WHERE email = @email`,
 
     savePuesto: `INSERT INTO Puestos_Trabajo (Tipo_Puesto, Condiciones, ID_Empresa) VALUES
                     (@tipo_puesto, @condiciones, @id_empresa)`,
