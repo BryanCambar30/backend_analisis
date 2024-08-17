@@ -12,5 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(empresasRoutes);
+app.use(personaRoutes);
 
 export default app
