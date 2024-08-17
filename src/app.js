@@ -1,6 +1,7 @@
 import express from 'express'
 import config from './config'
 import empresasRoutes from './routes/empresas.routes'
+import personaRoutes from './routes/personas.routes'
 
 const app = express();
 
