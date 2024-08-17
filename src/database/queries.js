@@ -10,6 +10,11 @@ export const queries = {
                             WHERE ID_Empresa = @Id`,
     getLoginEmpresa: `SELECT * FROM Empresas WHERE email = @email AND contrasenia = @contrasenia;`,
 
+    savePuesto: `INSERT INTO Puestos_Trabajo (Tipo_Puesto, Condiciones, ID_Empresa) VALUES
+                    (@tipo_puesto, @condiciones, @id_empresa)`,
+    saveTipoContrato: `INSERT INTO Tipo_Contratos (IdTipoContrato, TipoContrato, SalarioPorHora, horasContrato) VALUES
+                        (@id_tipo_contrato, @tipo_contrato, @salario_por_hora, @horas_contrato);`,
+
     savePersona: 'INSERT INTO Personas (ID_Persona, Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Email, Pasword) VALUES (@id, @nombre, @apellido, @fecha_nacimiento, @direccion, @telefono, @email, @password);',
     Solicitantes: 'INSERT INTO Solicitantes (ID_Persona, Estado) VALUES (@id);',
     saveEstudios: 'INSERT INTO Estudios (ID_Solicitante, Tipo_Estudio, Especialidad, Calificacion_Media, Solicitantes_ID_Persona) VALUES (@solicitante_id, @tipo_estudio, @especialidad, @promedio, @solicitantes_id)',
