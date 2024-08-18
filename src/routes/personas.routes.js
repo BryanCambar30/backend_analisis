@@ -1,17 +1,19 @@
 // routes/personas.routes.js
 import { Router } from "express";
-import { saveEstudios, saveInfoFamilia, saveInfoLegal, saveInfoSanitaria, savePersona } from "../controllers/personas.controller";
+import { aplicarTrabajo, getPersona, getSolEmpleo, loginPersona, savePersona, saveRequisitoEmpleo } from "../controllers/personas.controller";
 
 const router = Router();
 
-router.post('/persona/save', savePersona);
+router.post('/personas/save', savePersona)
 
-router.post('/persona/familia/save', saveInfoFamilia);
+router.post('/personas/login', loginPersona)
 
-router.post('/persona/estudios/save', saveEstudios);
+router.get('/personas/get', getPersona)
 
-router.post('/persona/legale/save', saveInfoLegal);
+router.get('/personas/getSolEmpleo', getSolEmpleo)
 
-router.post('/persona/sanitario/save', saveInfoSanitaria)
+router.post('/personas/apliTrabajo', aplicarTrabajo)
 
-export default router;
+router.post('/persona/ReqEmpleo', saveRequisitoEmpleo)
+
+export default router
