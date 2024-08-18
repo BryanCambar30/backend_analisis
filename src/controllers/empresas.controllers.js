@@ -74,7 +74,7 @@ export const updateEmpresaById = async (req, res) => {
     const saltRounds = 10; // Número de rondas de encriptación
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    if (nombre == null || cif == null || director == null || direccion == null || telefono == null || email == null || estado == null) {
+    if (!nombre || !cif || !director || !direccion || !telefono || !email || !estado) {
         return res.status(400).json({ msg: 'Bad Request.  Por favor llena todos los campos' })
     }
 
