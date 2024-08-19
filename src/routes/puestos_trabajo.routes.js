@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { savePuestoTrabajo, saveTipoContrato, saveContrato, getContratoById, saveRequisito, saveTipoRequisito } from '../controllers/puestos_trabajo.controller'
+import { savePuestoTrabajo, saveTipoContrato, saveContrato, getContratoById, saveRequisito, saveTipoRequisito, getPuestos } from '../controllers/puestos_trabajo.controller'
 
 const router = Router()
 
@@ -15,5 +15,6 @@ router.post('/tipoRequisito/save', saveTipoRequisito)
 
 router.get('/contrato/get', getContratoById)
 
+router.get('/puestos/get', getPuestos)
 
 export default router
