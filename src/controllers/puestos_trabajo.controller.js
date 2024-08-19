@@ -138,7 +138,7 @@ export const saveTipoRequisito = async (req, res) => {
 
 export const getContratoById = async (req, res) => {
 
-    const { id_puesto, id_tipo_contrato } = req.body
+    const { id_puesto, id_tipo_contrato } = req.params
 
     const pool = await getConnection()
 

@@ -13,7 +13,7 @@ router.post('/requisito/save', saveRequisito)
 
 router.post('/tipoRequisito/save', saveTipoRequisito)
 
-router.get('/contrato/get', getContratoById)
+router.get('/contrato/get/:id_puesto/:id_tipo_contrato', getContratoById)
 
 router.get('/puestos/get', getPuestos)
 
