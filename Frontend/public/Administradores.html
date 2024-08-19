@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - TrabajaHN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/administradores.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div id="cabeza">
+            <img src="./sources/img/2.png" alt="Trabajahn Logo" class="logo">
+            <h1 class="text-center">Administración de Registros</h1>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="solicitantes-tab" data-toggle="tab" href="#solicitantes" role="tab"
+                    aria-controls="solicitantes" aria-selected="true">Solicitantes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="empresas-tab" data-toggle="tab" href="#empresas" role="tab"
+                    aria-controls="empresas" aria-selected="false">Empresas</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <!-- Solicitantes -->
+            <div class="tab-pane fade show active" id="solicitantes" role="tabpanel" aria-labelledby="solicitantes-tab">
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped" id="solicitantesTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo Electrónico</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Empresas -->
+            <div class="tab-pane fade" id="empresas" role="tabpanel" aria-labelledby="empresas-tab">
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped" id="empresasTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>CIF</th>
+                                <th>Director</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Empresa -->
+    <div class="modal fade" id="editEmpresaModal" tabindex="-1" role="dialog" aria-labelledby="editEmpresaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editEmpresaModalLabel">Editar Empresa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editEmpresaForm">
+                        <input type="hidden" id="empresaId">
+                        <div class="form-group">
+                            <label for="nombreEmpresa">Nombre</label>
+                            <input type="text" class="form-control" id="nombreEmpresa" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="cif">CIF</label>
+                            <input type="text" class="form-control" id="cif" placeholder="CIF">
+                        </div>
+                        <div class="form-group">
+                            <label for="director">Director</label>
+                            <input type="text" class="form-control" id="director" placeholder="Director">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccionEmpresa">Dirección</label>
+                            <input type="text" class="form-control" id="direccionEmpresa" placeholder="Dirección">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoEmpresa">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefonoEmpresa" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="correoEmpresa">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correoEmpresa"
+                                placeholder="Correo Electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseñaEmpresa">Contraseña</label>
+                            <input type="password" class="form-control" id="contraseñaEmpresa" placeholder="Contraseña">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="saveEmpresa()">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Solicitante -->
+    <div class="modal fade" id="editSolicitanteModal" tabindex="-1" role="dialog"
+        aria-labelledby="editSolicitanteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editSolicitanteModalLabel">Editar Solicitante</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editSolicitanteForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento">
+                        </div>
+                        <div class="form-group">
+                            <label for="departamento">Departamento</label>
+                            <input type="text" class="form-control" id="departamento" placeholder="Departamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" class="form-control" id="ciudad" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección Específica</label>
+                            <input type="text" class="form-control" id="direccion" placeholder="Dirección Específica">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" class="form-control" id="empresa" placeholder="Empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="puesto">Puesto</label>
+                            <input type="text" class="form-control" id="puesto" placeholder="Puesto">
+                        </div>
+                        <div class="form-group">
+                            <label for="anosExperiencia">Años de Experiencia</label>
+                            <input type="number" class="form-control" id="anosExperiencia"
+                                placeholder="Años de Experiencia">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoPuesto">Tipo de Puesto</label>
+                            <input type="text" class="form-control" id="tipoPuesto" placeholder="Tipo de Puesto">
+                        </div>
+                        <div class="form-group">
+                            <label for="condiciones">Condiciones</label>
+                            <input type="text" class="form-control" id="condiciones" placeholder="Condiciones">
+                        </div>
+                        <div class="form-group">
+                            <label for="salario">Salario</label>
+                            <input type="text" class="form-control" id="salario" placeholder="Salario">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoEstudio">Tipo de Estudio</label>
+                            <input type="text" class="form-control" id="tipoEstudio" placeholder="Tipo de Estudio">
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidad">Especialidad</label>
+                            <input type="text" class="form-control" id="especialidad" placeholder="Especialidad">
+                        </div>
+                        <div class="form-group">
+                            <label for="calificacionMedia">Calificación Media</label>
+                            <input type="text" class="form-control" id="calificacionMedia"
+                                placeholder="Calificación Media">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicioMilitar">Servicio Militar</label>
+                            <input type="text" class="form-control" id="servicioMilitar" placeholder="Servicio Militar">
+                        </div>
+                        <div class="form-group">
+                            <label for="relacionJusticia">Relación con la Justicia</label>
+                            <input type="text" class="form-control" id="relacionJusticia"
+                                placeholder="Relación con la Justicia">
+                        </div>
+                        <div class="form-group">
+                            <label for="informacionSanitaria">Información Sanitaria</label>
+                            <input type="text" class="form-control" id="informacionSanitaria"
+                                placeholder="Información Sanitaria">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombreFamiliar">Nombre del Familiar</label>
+                            <input type="text" class="form-control" id="nombreFamiliar"
+                                placeholder="Nombre del Familiar">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoFamiliar">Teléfono del Familiar</label>
+                            <input type="tel" class="form-control" id="telefonoFamiliar"
+                                placeholder="Teléfono del Familiar">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseñaSolicitante">Contraseña</label>
+                            <input type="password" class="form-control" id="contraseñaSolicitante"
+                                placeholder="Contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            fetchEmpresas();
+
+            // Función para obtener empresas
+            function fetchEmpresas() {
+                $.get("http://localhost:4000/empresas/get", function (data) {
+                    let rows = "";
+                    data.forEach(empresa => {
+                        rows += `
+                            <tr>
+                                <td>${empresa.nombre}</td>
+                                <td>${empresa.cif}</td>
+                                <td>${empresa.director}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" onclick="editEmpresa(${empresa.id})">Editar</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteEmpresa(${empresa.id}, '${empresa.nombre}')">Eliminar</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    $("#empresasTable tbody").html(rows);
+                });
+            }
+
+            // Función para editar empresa
+            window.editEmpresa = function (id) {
+                $.get(`http://localhost:4000/empresa/get/${id}`, function (data) {
+                    $("#empresaId").val(data.id);
+                    $("#nombreEmpresa").val(data.nombre);
+                    $("#cif").val(data.cif);
+                    $("#director").val(data.director);
+                    $("#direccionEmpresa").val(data.direccion);
+                    $("#telefonoEmpresa").val(data.telefono);
+                    $("#correoEmpresa").val(data.email);
+                    $("#contraseñaEmpresa").val(data.password);
+                    $("#editEmpresaModal").modal("show");
+                });
+            }
+
+            // Función para guardar empresa
+            window.saveEmpresa = function () {
+                const id = $("#empresaId").val();
+                const empresa = {
+                    nombre: $("#nombreEmpresa").val(),
+                    cif: $("#cif").val(),
+                    director: $("#director").val(),
+                    direccion: $("#direccionEmpresa").val(),
+                    telefono: $("#telefonoEmpresa").val(),
+                    email: $("#correoEmpresa").val(),
+                    password: $("#contraseñaEmpresa").val()
+                };
+
+                $.ajax({
+                    url: `http://localhost:4000/empresa/update/${id}`,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(empresa),
+                    success: function () {
+                        $("#editEmpresaModal").modal("hide");
+                        fetchEmpresas();
+                    }
+                });
+            }
+
+            // Función para eliminar empresa
+            window.deleteEmpresa = function (id, nombre) {
+                if (confirm(`¿Estás seguro de que deseas eliminar ${nombre}?`)) {
+                    $.ajax({
+                        url: `http://localhost:4000/empresa/delete/${id}`,
+                        type: 'DELETE',
+                        success: function () {
+                            fetchEmpresas();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

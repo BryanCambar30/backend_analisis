@@ -1,0 +1,79 @@
+body {
+    background-color: #2B2B2B;
+    color: #F5F5F5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.landing-container {
+    background-color: #2B2B2B;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 80%;
+}
+
+.logo {
+    width: 170px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #D4AF37;
+}
+
+p {
+    color: #B2B2B2;
+    margin-bottom: 20px;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.section {
+    background-color: #2B2B2B;
+
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.section h2 {
+    color: #D4AF37;
+}
+
+.section p {
+    color: #B2B2B2;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #D4AF37;
+    color: #2B2B2B;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #B2B2B2;
+}
+
+
+
+/*
+Negro mate: #2B2B2B
+Dorado mate: #D4AF37
+Gris oscuro mate: #4F4F4F
+Blanco mate: #F5F5F5
+Gris claro mate: #B2B2B2*/

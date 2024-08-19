@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRABAJAHN</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <nav class="navbar fixed-top" style="background-color:  #2B2B2B;">
+    <div class="container-fluid">
+      <img src="./sources/img/logo-dark.jpg" alt="Logo" width="100" height="67" class="d-inline-block align-text-top">
+      <a class="navbar-brand" href="#">TRABAJAHN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" style="color: #D4AF37;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./registroPersonas.html">Editar perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html">Cerrar Sesion</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="box" id="caja1">
+      <div class="inner-box" data-toggle="modal" data-target="#myModal1">
+        <div id="titulo-cajas"><i class="fa-solid fa-building"></i>
+          <h5>Empresa 3</h5>
+        </div>
+        <p style="color: #B2B2B2;">Dirección 3</p>
+        <p style="color: #B2B2B2;">Descripción de la empresa 3</p>
+      </div>
+
+      <div class="inner-box" data-toggle="modal" data-target="#myModal1"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal1"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal1"></div>
+    </div>
+    <div class="box" id="caja2">
+      <div class="inner-box" data-toggle="modal" data-target="#myModal2">
+        <div id="titulo-cajas"><i class="fa-solid fa-briefcase"></i>
+          <h5>Puesto 1</h5>
+        </div>
+        <p style="color: #B2B2B2;">tipo puesto</p>
+        <p style="color: #B2B2B2;">tipo de contrato</p>
+      </div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal2"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal2"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal2"></div>
+    </div>
+    <div class="box" id="caja3">
+      <div class="inner-box" data-toggle="modal" data-target="#myModal3">
+        <div id="titulo-cajas"><i class="fa-solid fa-file-signature"></i>
+          <h5>Nombre Puesto</h5>
+        </div>
+        <p style="color: #B2B2B2;">Empresa</p>
+        <p style="color: #B2B2B2;">Estado</p>
+      </div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal3"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal3"></div>
+      <div class="inner-box" data-toggle="modal" data-target="#myModal3"></div>
+    </div>
+  </div>
+  <!--ventanas modales desde aqui-->
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">EMPRESAS</h5>
+        </div>
+        <div class="modal-body">
+          <h5>Nombre de la empresa</h5>
+          <h6>CEO: director</h6>
+          <p>telefono</p>
+          <p>direccion...</p>
+          <p>Descripción</p>
+          <p>cantidad de puestos: n</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" style="background-color: #D4AF37;">Elegir Empresa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--segunda modal-->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">PUESTO DE TRABAJO</h5>
+        </div>
+        <div id="ventana2" class="modal-body">
+          <h5>Nombre Puesto</h5>
+          <h6>tipo puesto</h6>
+          <h6>Empresa</h6>
+          <p>sueldo</p>
+          <h6>Requisitos:</h6>
+          <div id="requisitosMod">
+            <p>requisito 1</p>
+            <p>requisito 2</p>
+          </div>
+          <h6>Tipo Contrato</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" style="background-color: #D4AF37;"
+            onclick="postularPuesto()">Postular a puesto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--3era modal-->
+  <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">MI SOLICITUD</h5>
+        </div>
+        <div class="modal-body">
+          <h5>Nombre Puesto</h5>
+          <h6>tipo puesto</h6>
+          <h6>Empresa</h6>
+          <p>sueldo</p>
+          <h6>Requisitos:</h6>
+          <div id="requisitosMod">
+            <p>requisito 1</p>
+            <p>requisito 2</p>
+          </div>
+          <h6>Tipo Contrato</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary " style="background-color: #D4AF37;">Borrar solicitud</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/2e0fe5815d.js" crossorigin="anonymous"></script>
+<script src="./js/principal.js"></script>
+
+</html>
+
+<!--Negro mate: #2B2B2B
+Dorado mate: #D4AF37
+Gris oscuro mate: #4F4F4F
+Blanco mate: #F5F5F5
+Gris claro mate: #B2B2B2
+-->

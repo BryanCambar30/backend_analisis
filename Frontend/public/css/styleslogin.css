@@ -1,0 +1,66 @@
+body {
+    background-color: #4F4F4F;
+    color: #F5F5F5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #2B2B2B;
+    padding: 80px;
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #D4AF37;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: F5F5F5#B2B2B2;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #4F4F4F;
+    color: #F5F5F5;
+}
+
+button {
+    background-color: #D4AF37;
+    color: #2B2B2B;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #B2B2B2;
+}
+
+/*
+Negro mate: #2B2B2B
+Dorado mate: #D4AF37
+Gris oscuro mate: #4F4F4F
+Blanco mate: #F5F5F5
+Gris claro mate: #B2B2B2*/

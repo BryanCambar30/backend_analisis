@@ -1,0 +1,77 @@
+body {
+    background-color: #2B2B2B;
+    color: #F5F5F5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.register-container {
+    background-color: #4F4F4F;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+h1 {
+    color: #D4AF37;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #B2B2B2;
+}
+
+input, select {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2B2B2B;
+    color: #F5F5F5;
+    border: 1px solid #4F4F4F;
+}
+
+input.invalid {
+    border-color: red;
+}
+
+button {
+    background-color: #D4AF37;
+    color: #2B2B2B;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #B2B2B2;
+}
+
+.input-group-inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-group-inline .input-group {
+    width: 48%;
+}
+.logo {
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+}

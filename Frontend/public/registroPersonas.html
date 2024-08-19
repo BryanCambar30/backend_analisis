@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Trabajahn</title>
+    <link rel="stylesheet" href="css/stylesregistroPersonas.css">
+</head>
+
+<body>
+    <div class="register-container">
+        <a href="index.html">
+            <img src="./sources/img/1.png" alt="Logo de Trabajahn Agencia de Colocación" class="logo">
+        </a>
+        <h1>Formulario de Inscripción</h1>
+        <form id="registerForm" onsubmit="enviarDatos(event)">
+            <div class="input-group">
+                <label for="identidad">Identidad</label>
+                <input type="text" id="identidad" name="identidad" maxlength="13" placeholder="0801 1999 00007"
+                    required>
+                <small>ingrese su numero de identidad sin guiones</small>
+            </div>
+            <div class="input-group-inline">
+                <div class="input-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="input-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
+            <div class="input-group-inline">
+                <div class="input-group">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento">
+                        <option value="">Seleccione el departamento</option>
+                        <option value="francisco_morazan">Francisco Morazan</option>
+                        <option value="cortes">Cortes</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="ciudad">Ciudad</label>
+                    <select id="ciudad" name="ciudad">
+                        <option value="">Seleccione la ciudad</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="direccion">Dirección Específica</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+            <div class="input-group-inline">
+                <div class="input-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[23789][0-9]{7}">
+                    <small>ingrese solo numeros</small>
+                </div>
+                <div class="input-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>¿Tienes experiencia laboral?</label>
+                <input type="radio" id="datos_trabajo" name="datos_trabajo" value="si" onclick="toggleTrabajo(true)">
+                <label for="datos_trabajo">Sí</label>
+            </div>
+
+            <div id="trabajo_info" style="display: none;">
+                <div class="input-group">
+                    <label for="puesto">Puesto</label>
+                    <input type="text" id="puesto" name="puesto">
+                </div>
+                <div class="input-group-inline">
+                    <div class="input-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                    <div class="input-group">
+                        <label for="anos_experiencia">Años de Experiencia</label>
+                        <input type="number" id="anos_experiencia" name="anos_experiencia" min="0" max="70"
+                            style="width: 70%, marging-left 10px;">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="input-group">
+                <label>¿Hay datos de estudios?</label>
+                <input type="radio" id="datos_estudios" name="datos_estudios" value="si" onclick="toggleEstudios(true)">
+                <label for="datos_estudios">Sí</label>
+            </div>
+
+            <div id="estudios_info" style="display: none;">
+                <div class="input-group">
+                    <label for="tipo_estudio">Tipo de Estudio</label>
+                    <select name="tipo_estudio" id="tipo_estudio">
+                        <option value="">Seleccione</option>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Universitaria">Universitaria</option>
+                        <option value="Pregrado Universitaria">Pregrado Universitaria</option>
+                    </select>
+                </div>
+                <div class="input-group-inline">
+                    <div class="input-group">
+                        <label for="especialidad">Especialidad</label>
+                        <input type="text" id="especialidad" name="especialidad">
+                    </div>
+                    <div class="input-group">
+                        <label for="calificacion_media">Calificación Media</label>
+                        <input type="number" id="calificacion_media" name="calificacion_media">
+                    </div>
+                </div>
+
+            </div>
+            <div class="input-group">
+                <label>¿Hay datos legales?</label>
+                <input type="radio" id="datos_legales" name="datos_legales" value="si" onclick="toggleLegales(true)">
+                <label for="datos_legales">Sí</label>
+            </div>
+
+            <div id="legales_info" style="display: none;">
+                <div class="input-group-inline">
+                    <div class="input-group">
+                        <label for="servicio_militar">Servicio Militar</label>
+                        <select name="servicio_militar" id="servicio_militar">
+                            <option value="No">No</option>
+                            <option value="Si">Si</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="relacion_justicia">Relación con la Justicia</label>
+                        <select name="relacion_justicia" id="relacion_justicia">
+                            <option value="No">No</option>
+                            <option value="Si">Si</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="input-group">
+                <label>¿Deseas agregar informacion familiar?</label>
+                <input type="radio" id="datos_familiar" name="datos_familiar" value="si" onclick="toggleFamiliar(true)">
+                <label for="datos_familiar">Sí</label>
+            </div>
+
+            <div id="familiar_info" style="display: none;">
+                <div class="input-group-inline">
+                    <div class="input-group">
+                        <label for="nombre_familiar">Nombre del Familiar</label>
+                        <input type="text" id="nombre_familiar" name="nombre_familiar">
+                    </div>
+                    <div class="input-group">
+                        <label for="telefono_familiar">Teléfono del Familiar</label>
+                        <input type="tel" id="telefono_familiar" name="telefono_familiar" pattern="[23789][0-9]{7}">
+                        <small>ingrese solo numeros</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="tipo_relacion">Tipo de Relación</label>
+                    <select id="tipo_relacion" name="tipo_relacion">
+                        <option value="">seleccione</option>
+                        <option value="1">Madre</option>
+                        <option value="2">Padre</option>
+                        <option value="3">Conyugue</option>
+                        <option value="4">Hermano</option>
+                        <option value="5">Abuelo</option>
+                        <option value="6">Hijo</option>
+                        <option value="7">Tio</option>
+                        <option value="8">Primo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="info_sanitaria">¿Tiene Algun padecimiento clinico?</label>
+                <input type="text" id="info_sanitaria" name="info_sanitaria" placeholder="sin alergias registradas">
+            </div>
+
+            <div class="input-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena">
+            </div>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    <script src="./js/scrip_registro_Personas.js"></script>
+</body>
+
+</html>
