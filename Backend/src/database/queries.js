@@ -29,14 +29,13 @@ export const queries = {
                         INNER JOIN TiposRequisitos tr ON pt.ID_Puesto = tr.ID_Puesto
                         INNER JOIN Requisitos r ON tr.IdRequisito = r.IdRequisito
                         WHERE c.ID_Puesto = @id_puesto AND c.IdTipoContrato = @id_tipo_contrato`,
-    getPuestos: `SELECT pt.ID_Puesto, st.ID_Solicitud,c.Sueldo, pt.Tipo_Puesto, pt.Condiciones, tc.IdTipoContrato,tc.TipoContrato, tc.SalarioPorHora,
+    getPuestos: `SELECT pt.ID_Puesto, c.Sueldo, pt.Tipo_Puesto, pt.Condiciones, tc.IdTipoContrato,tc.TipoContrato, tc.SalarioPorHora,
                     tc.horasContrato, e.Nombre AS Empresa, tr.Tipo AS Requisito, r.Requisito AS TipoRequisito FROM Contratos c
                     INNER JOIN Puestos_Trabajo pt ON c.ID_Puesto = pt.ID_Puesto
                     INNER JOIN Tipo_Contratos tc ON c.IdTipoContrato = tc.IdTipoContrato
                     INNER JOIN Empresas e ON pt.ID_Empresa = e.ID_Empresa
                     INNER JOIN TiposRequisitos tr ON pt.ID_Puesto = tr.ID_Puesto
-                    INNER JOIN Requisitos r ON tr.IdRequisito = r.IdRequisito
-                    INNER JOIN Solicitudes_Tipos st ON pt.ID_Puesto = st.ID_Puesto`,
+                    INNER JOIN Requisitos r ON tr.IdRequisito = r.IdRequisito`,
 
     saveRequisito: `INSERT INTO Requisitos (IdRequisito, Requisito) VALUES
                         (@id_requisito, @requisito)`,
@@ -45,11 +44,11 @@ export const queries = {
 
     saveSolicitudPuesto: 'INSERT INTO Solicitudes_Empleo (Tipo_Puesto_Solicitado, Limitaciones, Deseos, SalarioMax, SalarioMin) VALUES (@tipo_puesto, @limitaciones, @deseos, @salario_max, @salario_min)',
     saveSolicitudesTipo: 'INSERT INTO Solicitudes_Tipos (ID_Solicitud, ID_Puesto, Tipo_Empleo) VALUES (@ID_Solicitud, @ID_Puesto, @Tipo_Empleo)',
-    
+
     getAllPersonas: `SELECT * FROM Personas`,
     getPersonaByEmail: `SELECT * FROM Personas WHERE email = @email`,
-    savePersona: `INSERT INTO Personas (ID_Persona, Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Email, Password, CV)
-                    VALUES (@identidad, @nombre, @apellido, @fecha_nacimiento, @direccion, @telefono, @email, @password, @cv);`,
+    savePersona: `INSERT INTO Personas (ID_Persona, Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Email, Password)
+                    VALUES (@identidad, @nombre, @apellido, @fecha_nacimiento, @direccion, @telefono, @email, @password);`,
     saveSolicitantes: 'INSERT INTO Solicitantes (ID_Persona, Estado) VALUES (@ID_Persona, @estado);',
     saveInfoFamilia: 'INSERT INTO Familiares (Solicitantes_ID_Persona, ID_Persona_Familiar, IDRelacion, Nombre, Telefono) VALUES (@solicitante_Id_Persona, @id_familiar, @id_parentesco, @nombre_fam, @telefono_fam)',
     saveEstudios: 'INSERT INTO Estudios (Tipo_Estudio, Especialidad, Calificacion_Media, Solicitantes_ID_Persona) VALUES (@tipo_estudio, @especialidad, @promedio, @solicitante_Id_Persona)',

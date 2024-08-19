@@ -1,58 +1,69 @@
-body{
+body {
     background-color: #4F4F4F;
 }
-.bg-body-tertiary{
+
+.bg-body-tertiary {
     background-color: #2B2B2B;
 }
 
-.navbar-brand { 
-color: #D4AF37;
-}
-.navbar-toggler-icon, #offcanvasNavbar{
-    background-color: #4F4F4F;
-}
-.offcanvas-title, .dropdown-item, .nav-link, .modal-title{
+.navbar-brand {
     color: #D4AF37;
 }
+
+.navbar-toggler-icon,
+#offcanvasNavbar {
+    background-color: #4F4F4F;
+}
+
+.offcanvas-title,
+.dropdown-item,
+.nav-link,
+.modal-title {
+    color: #D4AF37;
+}
+
 /*estilos de los contenedores */
 .container {
     display: flex;
     justify-content: space-around;
     padding: 0.7rem;
-    margin-top: 5rem; 
+    margin-top: 5rem;
 }
 
 .box {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;   
+    justify-content: flex-start;
     background-color: #2B2B2B;
     width: 32%;
-    height: 500px; 
+    height: 500px;
     position: relative;
+    overflow-y: auto;
 
 }
 
 .inner-box {
     background-color: #2B2B2B;
     width: 80%;
-    height: 100px; 
+    height: 100px;
     margin-top: 14px;
     box-shadow: 0 1.5px 5px #D4AF37;
     overflow: hidden;
 }
 
-#titulo-cajas{
+#titulo-cajas {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     color: #D4AF37;
 }
-.modal-content{
+
+.modal-content {
     background-color: #4F4F4F;
 }
-.modal-body{
+
+.modal-body {
     color: #fff;
 }

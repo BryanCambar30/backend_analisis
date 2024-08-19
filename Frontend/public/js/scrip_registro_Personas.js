@@ -1,4 +1,4 @@
-document.getElementById('registerForm').addEventListener('submit', function(event) {
+document.getElementById('registerForm').addEventListener('submit', function (event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
@@ -9,11 +9,11 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         const identidad = document.getElementById('identidad').value;
         const patron = /^[0-9]{13}$/;
         if (!patron.test(identidad)) {
-          alert('Por favor, ingrese un número de identidad válido de 13 dígitos.');
-          return false;
+            alert('Por favor, ingrese un número de identidad válido de 13 dígitos.');
+            return false;
         }
         return true;
-      }
+    }
     if (!validateText(data.nombre)) {
         markInvalid('nombre');
         isValid = false;
@@ -192,45 +192,45 @@ function toggleFamiliar(show) {
 
 
 
-  function enviarDatos() {
+function enviarDatos() {
     const form = document.getElementById('registerForm');
     const formData = new FormData(form);
 
     const datos = {
-      identidad: formData.get('identidad'),
-      nombre: formData.get('nombre'),
-      apellido: formData.get('apellido'),
-      fecha_nacimiento: formData.get('fecha_nacimiento'),
-      direccion: `${formData.get('departamento')}, ${formData.get('ciudad')}, ${formData.get('direccion')}`,
-      telefono: formData.get('telefono'),
-      email: formData.get('correo'),
-      password: formData.get('contrasena'),
-      estado: 1, //valor fijo
-      id_familiar: "0000000000",
-      nombre_fam: formData.get('nombre_familiar'),
-      telefono_fam: formData.get('telefono_familiar'),
-      id_parentesco: formData.get('tipo_relacion'),
-      tipo_estudio: formData.get('tipo_estudio'),
-      Especialidad: formData.get('especialidad'),
-      Promedio: formData.get('calificacion_media'),
-      servicio_militar: formData.get('servicio_militar'),
-      relacion_justicia: formData.get('relacion_justicia'),
-      info_sanitaria: formData.get('info_sanitaria'),
-      empresa: formData.get('empresa'),
-      puesto: formData.get('puesto'),
-      anios_experiencia: formData.get('anos_experiencia')
+        identidad: formData.get('identidad'),
+        nombre: formData.get('nombre'),
+        apellido: formData.get('apellido'),
+        fecha_nacimiento: formData.get('fecha_nacimiento'),
+        direccion: `${formData.get('departamento')}, ${formData.get('ciudad')}, ${formData.get('direccion')}`,
+        telefono: formData.get('telefono'),
+        email: formData.get('correo'),
+        password: formData.get('contrasena'),
+        estado: 1, //valor fijo
+        id_familiar: "0000000000",
+        nombre_fam: formData.get('nombre_familiar'),
+        telefono_fam: formData.get('telefono_familiar'),
+        id_parentesco: formData.get('tipo_relacion'),
+        tipo_estudio: formData.get('tipo_estudio'),
+        Especialidad: formData.get('especialidad'),
+        Promedio: formData.get('calificacion_media'),
+        servicio_militar: formData.get('servicio_militar'),
+        relacion_justicia: formData.get('relacion_justicia'),
+        info_sanitaria: formData.get('info_sanitaria'),
+        empresa: formData.get('empresa'),
+        puesto: formData.get('puesto'),
+        anios_experiencia: formData.get('anos_experiencia')
     };
 
     console.log('Datos enviados:', JSON.stringify(datos));
 
-    fetch('localhost:3001/registrar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
+    fetch('http://localhost:4000/personas/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
     })
-    .then(response => response.json())
-    .then(data => console.log('Success:', data))
-    .catch(error => console.error('Error:', error));
-  }
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
+}

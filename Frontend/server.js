@@ -2,10 +2,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3000;
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 // Servir archivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // Ruta para manejar solicitudes API
 app.get('/api/saludo', (req, res) => {

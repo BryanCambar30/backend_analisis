@@ -75,7 +75,7 @@ export const savePersona = async (req, res) => {
 
         const pool = await getConnection();
 
-        const cvBuffer = req.file.buffer;
+        // const cvBuffer = req.file.buffer;
 
         await pool.request()
             .input('identidad', sql.BigInt, identidad)
@@ -85,7 +85,7 @@ export const savePersona = async (req, res) => {
             .input('direccion', sql.VarChar, direccion)
             .input('telefono', sql.VarChar, telefono)
             .input('email', sql.VarChar, email)
-            .input('cv', sql.VarBinary, cvBuffer)
+            // .input('cv', sql.VarBinary, cvBuffer)
             .input('password', sql.VarChar, hashedPassword) //la contrasenia ya encriptada es la que mando a guardar a la ddbb
             .query(queries.savePersona);
 

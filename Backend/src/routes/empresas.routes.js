@@ -7,7 +7,7 @@ router.get('/empresas/get', getEmpresas)
 
 router.get('/empresa/get/:id', getEmpresaById)
 
-router.get('/empresa/login', loginEmpresa)
+router.post('/empresa/login', loginEmpresa)
 
 router.post('/empresa/save', saveEmpresa)
 
