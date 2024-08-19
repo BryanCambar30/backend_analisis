@@ -12,8 +12,8 @@ export const queries = {
 
     savePuesto: `INSERT INTO Puestos_Trabajo (Tipo_Puesto, Condiciones, ID_Empresa) VALUES
                     (@tipo_puesto, @condiciones, @id_empresa)`,
-    saveTipoContrato: `INSERT INTO Tipo_Contratos (IdTipoContrato, TipoContrato, SalarioPorHora, horasContrato) VALUES
-                        (@id_tipo_contrato, @tipo_contrato, @salario_por_hora, @horas_contrato);`,
+    saveTipoContrato: `INSERT INTO Tipo_Contratos (TipoContrato, SalarioPorHora, horasContrato) VALUES
+                        (@tipo_contrato, @salario_por_hora, @horas_contrato);`,
     saveContrato: `INSERT INTO Contratos (Sueldo, ID_Puesto, IdTipoContrato)
                     VALUES (
                         (SELECT SueldoBase 
